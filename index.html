@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine’s Day Bestie 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --pink:#ffd6e8;
+  --peach:#ffe8d6;
+  --soft:#fff8f0;
+  --accent:#ff6b81;
+  --glass:rgba(255,255,255,0.35);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#ffe6f2,#fff8f0);
+  color:#5a3e4d;
+  overflow-x:hidden;
+}
+
+/* Floating Hearts */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  color:var(--accent);
+  font-size:18px;
+  animation:floatUp linear infinite;
+  opacity:0.6;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(0);}
+  100%{transform:translateY(-110vh);opacity:0;}
+}
+
+section{
+  padding:90px 20px;
+  text-align:center;
+}
+
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;
+  margin-bottom:30px;
+}
+
+/* Hero */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at top,#ffd6e8,#fff8f0);
+}
+
+.hero h1{
+  font-size:2.8rem;
+  margin-bottom:20px;
+}
+
+.hero p{
+  max-width:500px;
+  margin-bottom:30px;
+}
+
+.btn{
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:14px 35px;
+  border-radius:40px;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(255,107,129,0.4);
+}
+
+.btn:hover{
+  transform:scale(1.08);
+}
+
+/* Cards */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.card{
+  padding:30px;
+  border-radius:20px;
+  background:var(--glass);
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  transition:0.4s;
+  opacity:0;
+  transform:translateY(40px);
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+/* Letter */
+.letter{
+  max-width:650px;
+  margin:auto;
+  padding:45px;
+  border-radius:25px;
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  font-family:'Dancing Script',cursive;
+  font-size:1.4rem;
+  box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+/* Fun Section */
+.fun-box{
+  margin-top:30px;
+}
+
+footer{
+  padding:20px;
+  background:#ffd6e8;
+  font-size:0.9rem;
+}
+
+/* Reveal */
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+  transition:1s;
+}
+
+@media(max-width:768px){
+  .hero h1{font-size:2rem;}
+  .letter{font-size:1.2rem;padding:30px;}
+}
+</style>
+</head>
+<body>
+
+<script>
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML="❤";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+3)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,600);
+</script>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Happy Valentine’s Day Darling! 💖</h1>
+  <p>You may not be my boyfriend… but you’re definitely my favorite human.</p>
+  <button class="btn" onclick="alert('You’re stuck with me forever 😌💗')">Click Me</button>
+</section>
+
+<!-- WHY YOU'RE MY FAVORITE -->
+<section>
+  <h2>Why You’re My Favorite Human 🥰</h2>
+  <div class="cards">
+    <div class="card reveal">You understand my chaos.</div>
+    <div class="card reveal">You listen to my rants.</div>
+    <div class="card reveal">You hype me up when I doubt myself.</div>
+    <div class="card reveal">You make boring days fun.</div>
+  </div>
+</section>
+
+<!-- THINGS I APPRECIATE -->
+<section>
+  <h2>Things I Appreciate About You 💫</h2>
+  <div class="cards">
+    <div class="card reveal">Your loyalty.</div>
+    <div class="card reveal">Your sense of humor.</div>
+    <div class="card reveal">Your random dramatic moments.</div>
+    <div class="card reveal">The way you genuinely care.</div>
+  </div>
+</section>
+
+<!-- LETTER -->
+<section>
+  <h2>A Little Note For You 💌</h2>
+  <div class="letter reveal">
+    I’m really grateful that life gave me you.
+    Not everything needs a label to be special.
+    You’re important to me in ways I can’t fully explain —
+    and I hope you always know that. 💖
+  </div>
+</section>
+
+<footer>
+  Made with 💖 for my favorite person
+</footer>
+
+<script>
+window.addEventListener("scroll",()=>{
+  document.querySelectorAll(".reveal").forEach(el=>{
+    const windowHeight=window.innerHeight;
+    const elementTop=el.getBoundingClientRect().top;
+    if(elementTop<windowHeight-100){
+      el.classList.add("active");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
